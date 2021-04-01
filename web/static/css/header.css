@@ -1,0 +1,23 @@
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+    header img {
+        width: 350px;
+        margin: 10px;
+    }
+    header h1 {
+        width: 750px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+
+
+
+
+
