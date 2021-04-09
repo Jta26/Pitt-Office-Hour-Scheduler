@@ -29,10 +29,13 @@ Vue.component('hf-dropdown', {
             this.searchValue = '';
         }
     },
-    template: ` <div class='hf-dropdown'>
-                    <div v-if="!selectedItem">
-                        <input type="text" :placeholder="placeholder" v-model.trim="searchValue" @input="toggleInput" @focus="toggle"/>
-                        <a href="#" v-on:click="toggle">CHV</a>
+    template: ` <div>
+                    <div class='hf-dropdown' :class="(isDropped) ? 'toggled' : ''"  v-if="!selectedItem">
+                        <div class='hf-dropdown-search'>
+                            <input type="text" :placeholder="placeholder" v-model.trim="searchValue" @input="toggleInput" @focus="toggle"/>
+                            <a href="#" v-on:click="toggle">CHV</a>    
+                        </div>
+                    
                         <div class='hf-dropdown-list' v-show="isDropped">
                             <div v-for="item in itemList" :key="item.name">
                                 <a href="#" v-on:click="selectItem($event, item)">{{ item.name }}</a>

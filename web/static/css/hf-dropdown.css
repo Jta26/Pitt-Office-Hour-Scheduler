@@ -1,13 +1,55 @@
 .hf-dropdown {
     width: 400px;
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.3);
+    border-radius: 5px;
 }
+
+.hf-dropdown.toggled {
+    border-radius: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+    .hf-dropdown .hf-dropdown-search {
+        border: 1px solid black;
+        width: 400px;
+    }
+        .hf-dropdown.toggled .hf-dropdown-search{
+            border: none;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
     .hf-dropdown input {
         font-size: 1.2em;
-        border: 1px solid black;
+        border: none;
         padding: 3px;
         border-radius: 5px;
     }
-    .hf-dropdown input:focus {
-        font-size: 1.2em;
-        outline: none;
+        .hf-dropdown input:focus {
+            font-size: 1.2em;
+            outline: none;
+        }
+    .hf-dropdown .hf-dropdown-list {
+        border: 1px solid black;
+        width: 400px;
+        z-index: 1;
+        background-color: white;
+        position: relative;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
+        .hf-dropdown .hf-dropdown-list div {
+            padding: 5px;
+        }
+        .hf-dropdown .hf-dropdown-list div:hover {
+            padding: 5px;
+            background-color: #1890FF;
+        }
+            .hf-dropdown .hf-dropdown-list div a {
+                padding: 5px;
+                color: black;
+                text-decoration: none;
+            }
+            .hf-dropdown .hf-dropdown-list div a:visited{
+                color: black;
+            }

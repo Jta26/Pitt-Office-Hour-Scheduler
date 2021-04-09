@@ -29,11 +29,16 @@
                 <span>
                     <hf-dropdown placeholder="Search Students" :item-list="
                         [{name: 'Joel Austin', id:'JTA26'},
-                        {name: 'Joel Austin', id:'JTA26'},{name: 'Joel Austin', id:'JTA26'},{name: 'Joel Austin', id:'JTA26'},]"
+                        {name: 'Kacey Hirt', id:'KCH26'},{name: 'Jose Zindia', id:'JDZ26'},{name: 'Pat Healy', id:'PCH26'},]"
                     >
                     </hf-dropdown>
                 </span>
             </p>
+        </div>
+        <div id='time-selection'>
+
+            <h2>Choose a day and time that works for you.</h2>
+
         </div>
 
         
