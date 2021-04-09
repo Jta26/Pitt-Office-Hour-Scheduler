@@ -9,19 +9,37 @@
     <link rel='stylesheet' href='./static/css/header.css'>
     <link rel='stylesheet' href='./static/css/course-selection.css'>
     <link rel='stylesheet' href='./static/css/student-selection.css'>
+    <link rel='stylesheet' href='./static/css/hf-dropdown.css'>
     <title>Office Hour Scheduler</title>
 </head>
 <body>
     <?php include './fragments/header.php';?>
     <div id='app'>
         <div id='course-selection'>
-            <p><b>Select a Course:</b> <span><course-selection></course-selection></span></p>
+            <p><b>Select a Course:</b> <span>
+
+                <hf-dropdown placeholder="Search Courses" :item-list="
+                        [{name: 'CS 0045: Data Structres'},
+                        {name: 'CS 0046: Algorithms'}]"></hf-dropdown>
+            
+            </span></p>
         </div>
         <div id='student-selection'>
-            <p><b>Select Student Name:</b> <span><course-selection></course-selection></span></p>
+            <p><b>Select Student Name:</b> 
+                <span>
+                    <hf-dropdown placeholder="Search Students" :item-list="
+                        [{name: 'Joel Austin', id:'JTA26'},
+                        {name: 'Joel Austin', id:'JTA26'},{name: 'Joel Austin', id:'JTA26'},{name: 'Joel Austin', id:'JTA26'},]"
+                    >
+                    </hf-dropdown>
+                </span>
+            </p>
         </div>
-    </div>
 
-    <script src='./components/courseSelection.js'></script>
+        
+
+
+    </div>
+    <script src='./components/dropdown.js'></script>
 </body>
 </html>

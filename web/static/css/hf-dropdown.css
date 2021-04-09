@@ -1,0 +1,13 @@
+.hf-dropdown {
+    width: 400px;
+}
+    .hf-dropdown input {
+        font-size: 1.2em;
+        border: 1px solid black;
+        padding: 3px;
+        border-radius: 5px;
+    }
+    .hf-dropdown input:focus {
+        font-size: 1.2em;
+        outline: none;
+    }
