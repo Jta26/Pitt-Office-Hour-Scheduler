@@ -17,4 +17,6 @@ Office Hour Scheduler
 
     ```git clone https://USERNAME:PASSWORD@github.com/Jta26/crispy-octo-pancake/```
 
+
 3. open the browser and go to http://localhost/crispy-octo-pancake/web/index.php
+
