@@ -1,4 +1,4 @@
-Vue.component('hf-dropdown', {
+const hfDropdown = {
     data: function () {
         return {
             isDropped: false,
@@ -12,7 +12,8 @@ Vue.component('hf-dropdown', {
         itemList: {
             type: Array/Object,
             required: true
-        }
+        },
+        dropdownContext: String
     },
     methods: {
         toggle: function (event) {
@@ -24,6 +25,7 @@ Vue.component('hf-dropdown', {
         },
         selectItem: function(event, item) {
             this.selectedItem = item;
+            this.$root.$emit(this.dropdownContext != null ? this.dropdownContext : 'generic dropdown', this.selectedItem);
         },
         clearItem: function(event) {
             this.selectedItem = null;
@@ -56,8 +58,6 @@ Vue.component('hf-dropdown', {
                         <h3 v-if="selectedItem"><span><a href="#" v-on:click="clearItem">Edit</a>&nbsp</span>{{ selectedItem.name }}</h3>
                     </div>
                 </div>`
-});
+};
 
-new Vue({
-    el: "#app"
-});
+

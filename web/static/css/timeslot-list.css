@@ -1,0 +1,36 @@
+.time-list-day {
+    margin-top: 30px;
+}
+
+.timeslots-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+    .timeslots-container > .timeslot {
+        margin: 10px;
+        padding: 15px;
+        border: 1px solid black;
+        border-radius: 30px;
+    }
+    .timeslots-container > .timeslot.timeslot.available:hover {
+        box-shadow: 1px 1px 4px 1px rgba(0,0,0,.55);
+        cursor: pointer;
+    }
+    .timeslots-container > .timeslot.available {
+        background-color: #2DC937;
+    }
+    .timeslots-container > .timeslot.filled {
+        background-color: #EEEEEE;
+        color: #808080;
+    }
+
+.selected-time {
+    margin-top: 30px;
+}
+    .selected-time .time-highlight {
+        color: #2d2d2d;
+        font-weight: bolder;
+        text-decoration: underline;
+    }
