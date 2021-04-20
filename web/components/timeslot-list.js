@@ -23,22 +23,28 @@ const hfTimeList = {
             this.selectedTimeslot = null;
         }
     },
+    mounted: function() {
+        // could potentially make the submit component emit errors to these components. this.$root.on('timeslotError', err => { this.handleError()})
+    },
     created: function() {
         this.mutableDays = this.days;
     },
     template: `
         <div>
-            <div v-for="day in mutableDays" :key="day.timestamp" class='time-list-day' v-if="selectedTimeslot == null">
-                <h2>{{ day.timestamp }}</h2>
-                <hr/>
-                <div class='timeslots-container'>
-                    <div 
-                        :class="(timeslot.status) ? 'timeslot available' : 'timeslot filled'"
-                        v-for="timeslot in day.timeslots" 
-                        :key="timeslot.timestamp"
-                        v-on:click="onTimeSelect($event, timeslot)"
-                        >
-                        <p>{{ timeslot.timestamp }}</p>
+            <div  v-if="selectedTimeslot == null">
+                <h2>Choose a day and time that works for you.</h2>
+                <div v-for="day in mutableDays" :key="day.timestamp" class='time-list-day'>
+                    <h2>{{ day.timestamp }}</h2>
+                    <hr/>
+                    <div class='timeslots-container'>
+                        <div 
+                            :class="(timeslot.status) ? 'timeslot available shadowed-hover' : 'timeslot filled'"
+                            v-for="timeslot in day.timeslots" 
+                            :key="timeslot.timestamp"
+                            v-on:click="onTimeSelect($event, timeslot)"
+                            >
+                            <p>{{ timeslot.timestamp }}</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@
     <link rel='stylesheet' href='./static/css/hf-dropdown.css'>
     <link rel='stylesheet' href='./static/css/timeslot-list.css'>
     <link rel='stylesheet' href='./static/css/notes.css'>
+    <link rel='stylesheet' href='./static/css/submit.css'>
     <title>Office Hour Scheduler</title>
 </head>
 <body>
@@ -44,7 +45,6 @@
                 </p>
             </div>
             <div id='time-selection'>
-                <h2>Choose a day and time that works for you.</h2>
                 <hf-time-list :days="
                     [
                         {

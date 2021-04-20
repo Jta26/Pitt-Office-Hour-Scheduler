@@ -1,3 +1,12 @@
+function isNullOrWhitespace( input ) {
+
+    if (typeof input === 'undefined' || input == null) return true;
+
+    return input.replace(/\s/g, '').length < 1;
+}
+
+
+
 const hfSubmit = {
     data: function() {
         return {
@@ -9,6 +18,25 @@ const hfSubmit = {
     },
     props: {
         
+    },
+    methods: {
+        onSubmit: function(event) {
+            // takes the data of this component and schedules an office hour for the student.
+            // if the reply from the php file is 200, then we successfully scheduled office hours
+            if (!isNullOrWhitespace(this.studentSelection) || !isNullOrWhitespace(courseSelection)) {
+                if (timeslotSelection != null) {
+                    // make the network request
+                }
+                else {
+                    // please select a timeslot.
+                }
+            }
+            else {
+                //please select a course or student name.
+            }
+
+
+        }
     },
     mounted: function() {
         // these listen for the events that are emitted onto the root element by the other components.
@@ -31,7 +59,7 @@ const hfSubmit = {
     },
     template: `
         <div class='hf-submit'>
-            <button>Schedule</button>
+            <button class='shadowed-hover'>Schedule</button>
         </div>
     `
 };

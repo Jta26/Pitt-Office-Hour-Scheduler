@@ -1,0 +1,18 @@
+.hf-submit {
+
+    margin: 10px;
+}
+    .hf-submit > button {
+        padding: 10px 35px 10px 35px;
+        background-color:#2DC937;
+        font-size: 1.8em;
+        border-radius: 20px;
+        border: 1px solid black;
+    }
+    .hf-submit > button:focus {
+        box-shadow: 0 0 1px 1px #1f1f1f;
+        outline: none;
+    }
+    .hf-submit > button:hover {
+        box-shadow: 0 0 1px 1px #1f1f1f;
+    }

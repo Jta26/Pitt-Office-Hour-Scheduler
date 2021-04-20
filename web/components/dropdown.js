@@ -39,6 +39,14 @@ const hfDropdown = {
             })
         }
     },
+    mounted: function() {
+        // listen for the event that selects the course, then make a network request for students in that course.
+        // i.e.
+        // this.$root.$on('courseSelection', data=> {
+        //     console.log('selected course', data.name);
+        //     this.courseSelection = data.name;
+        // });
+    },
     created: function() {
         this.mutableItemList = this.itemList;
     },

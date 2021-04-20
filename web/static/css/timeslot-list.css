@@ -13,10 +13,7 @@
         padding: 15px;
         border: 1px solid black;
         border-radius: 30px;
-    }
-    .timeslots-container > .timeslot.timeslot.available:hover {
-        box-shadow: 1px 1px 4px 1px rgba(0,0,0,.55);
-        cursor: pointer;
+        font-size:.8em;
     }
     .timeslots-container > .timeslot.available {
         background-color: #2DC937;
@@ -24,6 +21,7 @@
     .timeslots-container > .timeslot.filled {
         background-color: #EEEEEE;
         color: #808080;
+        border: none;
     }
 
 .selected-time {
