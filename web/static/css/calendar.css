@@ -29,8 +29,13 @@
     min-height: 200px;
 
 }
+.hf-calendar-item > h2 {
+    margin-left : 5px;
+    color: grey;
+}
 
 .hf-calendar-timeslots {
+    padding: 5px;
 }
 .hf-calendar-item > .hf-calendar-timeslots > .timeslot {
     width: 90%;

@@ -60,7 +60,8 @@ const hfCalendarItem = {
     },
     props: {
         day: Object,
-        type: String
+        type: String,
+        onTimeslotClick: Function
     },
     created: function() {
         if (this.day != null) {
@@ -73,7 +74,6 @@ const hfCalendarItem = {
                 for (let timeslot of this.mutableTimeslots) {
                     const timeslotDate = new Date(timeslot.timestamp);
                     timeslot.timeString = timeHelpers.formatAMPM(new Date(timeslot.timestamp));
-                    console.log(timeslotDate.getDay(), timeslotDate.getDate())
                     timeslot.fullString = `
                     ${dayNames[timeslotDate.getDay()]}, 
                     ${monthNames[timeslotDate.getMonth()]} 
@@ -91,7 +91,6 @@ const hfCalendarItem = {
                 if (timeslot.status == false) {
                     // show the tooltip, and bind it's position to the event location.
                     // and set the tooltip to the timeslot data
-                    console.log(event);
                     this.tooltip = {
                         shown: true,
                         header: 'Office Hours with ' + timeslot.student,
@@ -123,7 +122,8 @@ const hfCalendarItem = {
             <div class='hf-calendar-timeslots'>
                 <div v-if="type == 'INST'" :class="(timeslot.status) ? 'timeslot instructoravailable' : 'timeslot instructorfilled shadowed-hover'" 
                     v-on:mouseover="onTimeslotHover($event, timeslot)" 
-                    v-on:mouseleave="onTimeslotHoverLeave($event, timeslot)" 
+                    v-on:mouseleave="onTimeslotHoverLeave($event, timeslot)"
+                    v-on:click="(timeslot.status) ? null : onTimeslotClick($event, timeslot)"
                     v-for="timeslot in mutableDay.timeslots"
                 >
                     <p>{{ timeslot.timeString }} <span v-if="timeslot.student != null">- {{ timeslot.student }}</span></p>
@@ -140,7 +140,7 @@ const hfCalendar = {
             mutableDays: [],
             padCount: 0,
             monthString: '',
-            yearString: ''
+            yearString: '',
         }
     },
     props: {
@@ -148,8 +148,10 @@ const hfCalendar = {
         type: String // should probably be Enum.
     },
     methods: {
-        onTimeslotSelect: function(event, day) {
-
+        onTimeslotClick: function(event, timeslot) {
+            console.log('timeslot clicked', timeslot);
+            this.$root.$emit('updateTimeslotSelection', timeslot);
+            this.$root.$emit('updateInstructorNotes', null);
         }
     },
     created: function() {
@@ -183,7 +185,7 @@ const hfCalendar = {
                     <hf-calendar-item></hf-calendar-item>
                 </template>
                 <template v-for="day in mutableDays"> 
-                    <hf-calendar-item :type="type" :day="day"></hf-calendar-item>
+                    <hf-calendar-item :type="type" :day="day" :onTimeslotClick="onTimeslotClick"></hf-calendar-item>
                 </template>
             </div>
         </div>

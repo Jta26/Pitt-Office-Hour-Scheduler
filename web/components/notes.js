@@ -21,7 +21,7 @@ const hfNotes = {
     template: `
         <div class='hf-notes'>
             <h2>What are you looking for help with?</h2>
-            <textarea rows="7" cols="100" v-model="noteData" @input="emitNotesChanged"></textarea>
+            <textarea rows="7" cols="100" v-model="noteData" @input="emitNotesChanged" placeholder="Enter Text Here"></textarea>
         </div>
     `
 };

@@ -1,3 +1,9 @@
+
+
+#time-selection {
+    width: 65%;
+}
+
 .time-list-day {
     margin-top: 30px;
 }
@@ -9,26 +15,53 @@
     flex-wrap: wrap;
 }
     .timeslots-container > .timeslot {
-        margin: 10px;
-        padding: 15px;
+        margin: 5px;
+        padding: 5px 20px 5px 20px;
         border: 1px solid black;
         border-radius: 30px;
         font-size:.8em;
     }
     .timeslots-container > .timeslot.available {
         background-color: #2DC937;
+        box-shadow: 0 1px 5px #808080;
     }
+        .timeslots-container > .timeslot.available:hover {
+            background-color: #1890FF;
+            color: white;
+        }
     .timeslots-container > .timeslot.filled {
         background-color: #EEEEEE;
         color: #808080;
-        border: none;
+        border: 1px solid grey;
     }
 
 .selected-time {
-    margin-top: 30px;
+
 }
     .selected-time .time-highlight {
         color: #2d2d2d;
         font-weight: bolder;
         text-decoration: underline;
     }
+    .selected-time > button {
+        background: white;
+        border: none;
+        padding: 5px;
+        margin-top: 30px;
+        background: white;
+        border: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px;
+    }
+        .selected-time > button > img {
+            width: 35px;
+        }
+    .selected-time > button:hover {
+        box-shadow: 0px 0px 5px black;
+        border-radius: 5px;
+    }
+        .selected-time > button > h1 {
+            margin-left: 5px;
+        }
