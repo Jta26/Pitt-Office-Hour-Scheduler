@@ -1,0 +1,14 @@
+[
+	{
+		"title": "Data Structures",
+		"course_code": "CS 0045",
+		"term": "2214",
+		"students": ["Joel Austin", "Kacey Hirth", "Jose Zindia", "Pat Healy", "Brenna Schroter"]
+	},
+	{
+		"title": "Algorithms",
+		"course_code": "CS 0046",
+		"term": "2214",
+		"students": ["Joel Austin", "Kacey Hirth", "Jose Zindia", "Pat Healy", "Brenna Schroter"]
+	}
+]
