@@ -35,9 +35,9 @@ const hfNotes = {
             <button class='back-button' v-on:click="clearNotes"><img src='./assets/backarrow.png'/> <h3>Go Back</h3></button>
             <h2>Selected Timeslot:</h2>
             <h3>{{ timeslotSelection.fullString }}</h3>
-            <h3>With {{ timeslotSelection.student }}</h3>
+            <h3>With {{ timeslotSelection.student.name }} ({{ timeslotSelection.student.id }})</h3>
             <p class='commentHead'>Student Comment:</p>
-            <p class='comment'>&quot;{{ timeslotSelection.studentComment }}&quot;</p>
+            <p class='comment'>&quot;{{ timeslotSelection.student_note }}&quot;</p>
             <h2>Office Hour Notes:</h2>
             <textarea rows="7" cols="100" v-model="noteData" @input="emitNotesChanged" placeholder="Enter Text Here"></textarea>
             <div>

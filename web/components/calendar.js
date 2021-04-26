@@ -93,10 +93,10 @@ const hfCalendarItem = {
                     // and set the tooltip to the timeslot data
                     this.tooltip = {
                         shown: true,
-                        header: 'Office Hours with ' + timeslot.student,
+                        header: 'Office Hours with ' + timeslot.student.name + " (" + timeslot.student.id + ")",
                         subHeader: timeslot.fullString,
                         colon: 'Student Comment:',
-                        colonContent: timeslot.studentComment,
+                        colonContent: timeslot.student_note,
                         positionX: event.layerX + 10,
                         positionY: event.layerY - 240
                     }
@@ -126,7 +126,7 @@ const hfCalendarItem = {
                     v-on:click="(timeslot.status) ? null : onTimeslotClick($event, timeslot)"
                     v-for="timeslot in mutableDay.timeslots"
                 >
-                    <p>{{ timeslot.timeString }} <span v-if="timeslot.student != null">- {{ timeslot.student }}</span></p>
+                    <p>{{ timeslot.timeString }} <span v-if="timeslot.student != null">- {{ timeslot.student.name }}</span></p>
                 </div>
             </div>
             <hf-tooltip v-if="tooltip.shown" :tooltip-data="tooltip"></hf-tooltip>
@@ -154,8 +154,11 @@ const hfCalendar = {
             this.$root.$emit('updateInstructorNotes', null);
         }
     },
-    created: function() {
+    created: async function() {
         // on create, add days to the front or back depending on the first and last day.
+        const apiResult = await fetch('/data/full_schedule.php');
+        this.days = await apiResult.json();
+
         this.mutableDays = timeHelpers.fillMissingDays(this.days);
         this.padCount = timeHelpers.getPadBeginning(this.mutableDays);
         const date = new Date(this.mutableDays[0].timestamp);

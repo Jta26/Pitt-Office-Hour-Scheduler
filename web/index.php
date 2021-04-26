@@ -35,9 +35,7 @@
             </div>
             <div id='student-selection'>
                     <span>
-                        <hf-dropdown placeholder="Search Students" :item-list="
-                            [{name: 'Joel Austin', id:'JTA26'},
-                            {name: 'Kacey Hirth', id:'KCH26'},{name: 'Jose Zindia', id:'JDZ26'},{name: 'Pat Healy', id:'PCH26'},]"
+                        <hf-dropdown placeholder="Search Students" :item-list="[]"
                             dropdown-context='studentSelection'
                             dropdown-label='Select Student Name: '
                         >

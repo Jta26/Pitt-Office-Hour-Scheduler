@@ -1,4 +1,3 @@
-
 const monthNames = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"
 ];
@@ -32,8 +31,11 @@ const hfTimeList = {
     mounted: function() {
         // could potentially make the submit component emit errors to these components. this.$root.on('timeslotError', err => { this.handleError()})
     },
-    created: function() {
-        this.mutableDays = this.days;
+    created: async function() {
+        const apiResult = await fetch('/data/schedule.php');
+        const scheduleData = await apiResult.json();
+        this.mutableDays = scheduleData;
+        //this.mutableDays = this.days;
         for (let day of this.mutableDays) {
             day.dateObj = new Date(day.timestamp);
             day.dateString = `${dayNames[day.dateObj.getDay()]}, ${monthNames[day.dateObj.getMonth()]} ${day.dateObj.getDate()}, ${day.dateObj.getFullYear()} `;

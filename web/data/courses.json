@@ -2,13 +2,11 @@
 	{
 		"title": "Data Structures",
 		"course_code": "CS 0045",
-		"term": "2214",
-		"students": ["Joel Austin", "Kacey Hirth", "Jose Zindia", "Pat Healy", "Brenna Schroter"]
+		"students": [{"name": "Joel Austin", "id": "JTA26"}, {"name": "Kacey Hirth", "id": "KCH26"}, {"name": "Jose Zindia", "id": "JDZ26"}]
 	},
 	{
 		"title": "Algorithms",
 		"course_code": "CS 0046",
-		"term": "2214",
-		"students": ["Joel Austin", "Kacey Hirth", "Jose Zindia", "Pat Healy", "Brenna Schroter"]
+		"students": [{"name": "Jose Zindia", "id": "JDZ26"}, {"name": "Pat Healy", "id": "PCH26"}, {"name": "Brenna Schroter", "id": "BKS31"}]
 	}
 ]

@@ -19,15 +19,20 @@ const hfSubmit = {
         
     },
     methods: {
-        onSubmit: function(event) {
+        onSubmit: async function(event) {
             // takes the data of this component and schedules an office hour for the student.
             // if the reply from the php file is 200, then we successfully scheduled office hours
-            console.log(this.studentSelection, this.courseSelection, this.timeslotSelection)
             if (!isNullOrWhitespace(this.studentSelection) && !isNullOrWhitespace(this.courseSelection)) {
                 if (this.timeslotSelection != null) {
                     // make the network request
-                    console.log('test')
                     this.$root.$emit('clearErrorMessage');
+                    const apiResult = await fetch("/data/schedule.php", {method: 'POST', body: JSON.stringify({"student": this.studentSelection, "time" : this.timeslotSelection, "note": this.notes}), credentials: 'same-origin'});
+                    if(apiResult.status == 201){
+                        // acknowledge successful appointment here
+                    } else {
+                        this.$root.$emit('updateErrorMessage', 'Server issue... try refreshing the page.');
+                    }
+                    //this.$root.$emit('updateErrorMessage', '');
                 }
                 else {
                     // please select a timeslot.
@@ -56,7 +61,7 @@ const hfSubmit = {
         });
         this.$root.$on('studentSelection', data => {
             if (data != null) {
-                this.studentSelection = data.name;
+                this.studentSelection = data.id;
             }
             else {
                 this.studentSelection = null;
@@ -64,7 +69,7 @@ const hfSubmit = {
         });
         this.$root.$on('timeslotSelection', data => {
             if (data != null) {
-                this.timeslotSelection = {status: data.status, timestamp: data.timestamp};
+                this.timeslotSelection = data.timestamp;
             }
             else {
                 this.timeslotSelection = null;

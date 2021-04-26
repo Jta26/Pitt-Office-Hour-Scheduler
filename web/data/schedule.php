@@ -1,20 +1,27 @@
 <?php 
 	// This file handles two functions
-	// GET: Returns a list of dictionaries containing information about 
+	// GET: Returns a list of dictionaries containing information about available appointments
+	// POST: schedule an appointment with a student id (named "student"), time, and note
 	$json_s = file_get_contents("schedule.json");
 	$json = json_decode($json_s, TRUE);
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$student = $_POST['student'];
-		$time = $_POST['time'];
+		$post_data = json_decode(file_get_contents('php://input'), true);
+		$student_id = $post_data['student'];
+		$student = array();
+		$time = $post_data['time'];
+		$note = $post_data['note'];
 
 		//todo: check if valid student
 		$is_valid = false;
 		$courses_s = file_get_contents("courses.json");
 		$courses_json = json_decode($courses_s, TRUE);
 		foreach($courses_json as $course){
-			if(in_array($student, $course["students"])){
-				$is_valid = true;
+			foreach($course["students"] as $st){
+				if($st["id"] == $student_id){
+					$student = $st;
+					$is_valid = true;
+				}
 			}
 		}
 
@@ -25,10 +32,12 @@
 
 		$time_available = false;
 		for($i = 0; $i < count($json); $i++){
-			if($json[$i]["time"] == $time && $json[$i]["available"]){
-				$json[$i]["student"] = $student;
-				$json[$i]["available"] = false;
-				$time_available = true;
+			for($j = 0; $j < count($json[$i]["timeslots"]); $j++){
+				if($json[$i]["timeslots"][$j]["timestamp"] == $time && !array_key_exists("student",$json[$i]["timeslots"][$j])){
+					$json[$i]["timeslots"][$j]["student"] = $student;
+					$json[$i]["timeslots"][$j]["student_note"] = $note;
+					$time_available = true;
+				}
 			}
 		}
 
@@ -43,10 +52,19 @@
 		http_response_code(201);
 	}else{
 		$sched = array();
-		foreach($json as $app){
-			//remove any data from schedule.json that we don't want to be returned in a get request
-			unset($app["student"]);
-			array_push($sched, $app);
+		foreach($json as $day){
+			$timeslots = array();
+			foreach($day["timeslots"] as $app){
+				if(array_key_exists("student",$app)){
+					$app["status"] = false;
+					unset($app["student"]);
+				}else{
+					$app["status"] = true;
+				}
+				array_push($timeslots, $app);
+			}
+			$day["timeslots"] = $timeslots;
+			array_push($sched, $day);
 		}
 
 		echo json_encode($sched);
