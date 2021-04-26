@@ -156,10 +156,10 @@ const hfCalendar = {
     },
     created: async function() {
         // on create, add days to the front or back depending on the first and last day.
-        const apiResult = await fetch('/data/full_schedule.php');
-        this.days = await apiResult.json();
+        const apiResult = await fetch('./data/full_schedule.php');
+        const apiData = await apiResult.json();
 
-        this.mutableDays = timeHelpers.fillMissingDays(this.days);
+        this.mutableDays = timeHelpers.fillMissingDays(apiData);
         this.padCount = timeHelpers.getPadBeginning(this.mutableDays);
         const date = new Date(this.mutableDays[0].timestamp);
         this.monthString = monthNames[date.getMonth()];

@@ -26,7 +26,7 @@ const hfSubmit = {
                 if (this.timeslotSelection != null) {
                     // make the network request
                     this.$root.$emit('clearErrorMessage');
-                    const apiResult = await fetch("/data/schedule.php", {method: 'POST', body: JSON.stringify({"student": this.studentSelection, "time" : this.timeslotSelection, "note": this.notes}), credentials: 'same-origin'});
+                    const apiResult = await fetch("./data/schedule.php", {method: 'POST', body: JSON.stringify({"student": this.studentSelection, "time" : this.timeslotSelection, "note": this.notes}), credentials: 'same-origin'});
                     if(apiResult.status == 201){
                         // acknowledge successful appointment here
                     } else {

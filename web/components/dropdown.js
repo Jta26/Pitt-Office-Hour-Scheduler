@@ -35,7 +35,7 @@ const hfDropdown = {
             this.selectedItem = item;
             if(this.dropdownContext == "courseSelection"){
                 var code = this.selectedItem.name.substring(0, this.selectedItem.name.indexOf(":"));
-                const apiResult = await fetch('/data/students.php?course=' + code);
+                const apiResult = await fetch('./data/students.php?course=' + code);
                 const studentData = await apiResult.json();
                 students = studentData;
             }
@@ -63,7 +63,7 @@ const hfDropdown = {
         //     this.courseSelection = data.name;
         // });
         if(this.dropdownContext == "courseSelection"){
-            const apiResult = await fetch('/data/courses.php');
+            const apiResult = await fetch('./data/courses.php');
             const courseData = await apiResult.json();
 
             var courses = new Array();

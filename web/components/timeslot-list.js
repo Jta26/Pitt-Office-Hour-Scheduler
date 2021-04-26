@@ -32,7 +32,7 @@ const hfTimeList = {
         // could potentially make the submit component emit errors to these components. this.$root.on('timeslotError', err => { this.handleError()})
     },
     created: async function() {
-        const apiResult = await fetch('/data/schedule.php');
+        const apiResult = await fetch('./data/schedule.php');
         const scheduleData = await apiResult.json();
         this.mutableDays = scheduleData;
         //this.mutableDays = this.days;
