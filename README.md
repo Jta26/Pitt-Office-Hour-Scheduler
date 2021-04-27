@@ -1,22 +1,18 @@
-# crispy-octo-pancake
-Office Hour Scheduler
+# Office Hour Scheduler
 
+## Requirements
+* Wampserver 
 
+## Setting up Your Local Web Development Environment(windows using wamp)
 
-
-
-
-
-# local web development setup (windows using wamp)
-1. download wamp, a tool for running windows apache server to run php
+**Step One: Download wamp, a tool for running windows apache server to run php**
 
     https://www.wampserver.com/en/
 
 
-2. navigate to the place you downloaded wamp, and git clone the rep into the www directory.
+**Step Two : Navigate to the place you downloaded wamp, and git clone the rep into the www directory**
 
-    ```git clone https://USERNAME:PASSWORD@github.com/Jta26/crispy-octo-pancake/```
+    ```git clone https://USERNAME:PASSWORD@github.com/Jta26/Pitt-Office-Hour-Scheduler/```
 
-
-3. open the browser and go to http://localhost/crispy-octo-pancake/web/index.php
+**Step Three: Open the browser and go to http://localhost/Pitt-Office-Hour-Scheduler/web/index.php
 
